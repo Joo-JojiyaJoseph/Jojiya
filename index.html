@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forever Us ❤️</title>
+<title>To My Love ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -16,63 +16,50 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
     min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
     color:white;
     padding:20px;
-    overflow-x:hidden;
+    overflow:hidden;
 }
 
-/* Header */
-.header{
-    text-align:center;
-    margin-bottom:30px;
+.container{
+    max-width:550px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
 }
 
-.header h1{
+h1{
     font-family:'Dancing Script',cursive;
     font-size:2.8rem;
+    margin-bottom:20px;
 }
 
-.header p{
-    margin-top:10px;
-    font-size:1rem;
+#typedText{
+    font-size:1.1rem;
+    line-height:1.8;
+    white-space:pre-line; /* keeps line breaks */
+    min-height:200px;
 }
 
-/* Responsive Grid */
-.gallery{
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
-    gap:15px;
+.cursor{
+    display:inline-block;
+    width:2px;
+    background:white;
+    margin-left:5px;
+    animation: blink 1s infinite;
 }
 
-/* Image Style */
-.gallery img{
-    width:100%;
-    border-radius:20px;
-    opacity:0;
-    transform: translateY(40px) scale(0.9);
-    transition: all 0.8s ease;
-    box-shadow:0 10px 25px rgba(0,0,0,0.3);
-    animation: floatImage 6s ease-in-out infinite;
-}
-
-/* Reveal Animation */
-.gallery img.show{
-    opacity:1;
-    transform: translateY(0) scale(1);
-}
-
-/* Hover Effect */
-.gallery img:hover{
-    transform: scale(1.08);
-}
-
-/* Floating soft animation */
-@keyframes floatImage{
-    0%{ transform: translateY(0px); }
-    50%{ transform: translateY(-8px); }
-    100%{ transform: translateY(0px); }
+@keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:0;}
 }
 
 /* Floating Hearts */
@@ -89,91 +76,57 @@ body{
     50%{ opacity:1; }
     100%{ transform:translateY(-100vh); opacity:0; }
 }
-
-/* Love Letter Popup */
-.popup{
-    display:none;
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    background:white;
-    color:#ff4b6e;
-    padding:25px;
-    border-radius:20px;
-    width:90%;
-    max-width:350px;
-    text-align:center;
-    box-shadow:0 20px 40px rgba(0,0,0,0.3);
-}
-
-button{
-    margin-top:15px;
-    padding:10px 20px;
-    border:none;
-    border-radius:25px;
-    background:white;
-    color:#ff4b6e;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#ff4b6e;
-    color:white;
-}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-    <h1>Happy Anniversary My Love ❤️</h1>
-    <p>Every memory with you is my favorite.</p>
-    <button onclick="openLetter()">Open My Heart 💌</button>
+<div class="container">
+    <h1>My Love ❤️</h1>
+    <div id="typedText"></div><span class="cursor"></span>
 </div>
 
-<div class="gallery">
-    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
-    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2">
-    <img src="https://images.unsplash.com/photo-1529634896730-1e8d4d3c2b5c">
-    <img src="https://images.unsplash.com/photo-1519741497674-611481863552">
-    <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb">
-    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1">
-    <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
-    <img src="https://images.unsplash.com/photo-1491975474562-1f4e30bc9468">
-</div>
-
-<div class="popup" id="letter">
-    <h2>To My Forever ❤️</h2>
-    <p>
-        You are my best friend, my happiness,
-        and my greatest blessing.
-        I choose you today, tomorrow,
-        and forever.
-    </p>
-    <button onclick="closeLetter()">Close</button>
-</div>
-
+<!-- Background Music -->
 <audio id="bgMusic" autoplay loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b70c9c6d4.mp3?filename=romantic-background-112199.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// Scroll Reveal Animation
-const images = document.querySelectorAll(".gallery img");
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
-    });
-});
+// YOUR EXACT LETTER
+const text = `My love,
 
-images.forEach(img => {
-    observer.observe(img);
-});
+From the moment you came into my life,
+everything became more beautiful.
+
+You are my happiness,
+my strength,
+and my forever home.
+
+No matter what happens,
+I will always choose you.
+
+Today. Tomorrow. Forever. ❤️`;
+
+let i = 0;
+const typedText = document.getElementById("typedText");
+
+function typeWriter(){
+    if(i < text.length){
+        typedText.innerHTML += text.charAt(i);
+
+        // Natural pause effect
+        let delay = 40;
+        if(text.charAt(i) === "," ) delay = 200;
+        if(text.charAt(i) === "." ) delay = 400;
+        if(text.charAt(i) === "\n") delay = 300;
+
+        i++;
+        setTimeout(typeWriter, delay);
+    }
+}
+
+typeWriter();
 
 // Floating hearts
 function createHeart(){
@@ -187,18 +140,11 @@ function createHeart(){
 }
 setInterval(createHeart,500);
 
-// Popup
-function openLetter(){
-    document.getElementById("letter").style.display="block";
-}
-function closeLetter(){
-    document.getElementById("letter").style.display="none";
-}
-
 // Mobile autoplay fix
 document.body.addEventListener("click", function(){
     document.getElementById("bgMusic").play();
 });
+
 </script>
 
 </body>
