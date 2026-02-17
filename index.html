@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Vipin ❤️ Jojiya · cinematic 4th anniversary</title>
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Vipin ❤️ Jojiya · 4th romantic anniversary</title>
+    <!-- Fonts & Icons (romantic serif + modern) -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -16,15 +16,13 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: #0a0a1a;
-            color: #fff;
+            background: #1a0f1a;
+            color: #ffe6f0;
             overflow-x: hidden;
             min-height: 100vh;
-            position: relative;
-            perspective: 1000px;
         }
 
-        /* === MAIN CINEMATIC BACKGROUND VIDEO (FULLSCREEN, LOOP) === */
+        /* ===== ROMANTIC VIDEO BACKGROUND (dreamy slow-motion feel) ===== */
         #bg-video {
             position: fixed;
             top: 0;
@@ -33,21 +31,45 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
-            filter: brightness(0.5) saturate(1.2) blur(2px);
+            filter: brightness(0.5) saturate(1.4) blur(3px) contrast(1.1);
             transform: scale(1.02);
         }
 
-        .glass-overlay {
+        /* Soft pink-purple glass overlay */
+        .romantic-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 40%, rgba(255, 215, 245, 0.15), rgba(10, 5, 20, 0.75) 80%);
-            backdrop-filter: blur(8px) saturate(180%);
-            -webkit-backdrop-filter: blur(8px) saturate(180%);
+            background: radial-gradient(circle at 30% 40%, rgba(255, 200, 230, 0.25), rgba(30, 10, 30, 0.8) 80%);
+            backdrop-filter: blur(10px) saturate(160%);
+            -webkit-backdrop-filter: blur(10px) saturate(160%);
             z-index: 1;
             pointer-events: none;
+        }
+
+        /* floating stars + hearts overlay */
+        .stars-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            background-image: 
+                radial-gradient(2px 2px at 15px 80px, #fff9, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 72px 430px, #ffb6d9, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 280px 150px, #ffe6f0, rgba(0,0,0,0)),
+                radial-gradient(4px 4px at 500px 700px, #ffaacc, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 900px 320px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(5px 5px at 200px 800px, #ffd0dd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 1100px 550px, #ffe0f0, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 400px 400px;
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 5;
         }
 
         /* main content */
@@ -64,47 +86,52 @@
             pointer-events: auto;
         }
 
-        /* glass cards */
+        /* glassmorphism ultra-premium card */
         .glass-card {
-            background: rgba(20, 10, 30, 0.35);
-            backdrop-filter: blur(16px) saturate(200%);
-            -webkit-backdrop-filter: blur(16px) saturate(200%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 42px;
-            box-shadow: 0 30px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255, 192, 203, 0.3) inset, 0 0 30px rgba(255, 105, 180, 0.3);
+            background: rgba(40, 20, 40, 0.35);
+            backdrop-filter: blur(18px) saturate(200%);
+            -webkit-backdrop-filter: blur(18px) saturate(200%);
+            border: 1px solid rgba(255, 220, 240, 0.4);
+            border-radius: 48px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.6), 0 0 0 1px rgba(255, 160, 210, 0.3) inset, 0 0 40px rgba(255, 105, 180, 0.4);
             padding: 2rem 1.8rem;
+            transition: all 0.3s ease;
         }
 
-        /* cinematic intro */
+        .glass-card:hover {
+            box-shadow: 0 40px 60px rgba(255, 105, 180, 0.3), 0 0 0 2px #ffb6c1 inset;
+        }
+
+        /* cinematic intro with romantic fonts */
         .cinematic-intro {
             text-align: center;
             margin-bottom: 3rem;
-            animation: floatIn 2.2s ease-out;
+            animation: floatIn 2s ease-out;
         }
 
         .cinematic-intro h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.2rem, 12vw, 4.8rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffe6f0, #ffb6d9, #fff2d7);
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 15vw, 6rem);
+            font-weight: 400;
+            background: linear-gradient(145deg, #ffe6f5, #ffb6d9, #ffd9b0);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 0 20px #ff69b4, 0 0 60px #ffb6c1;
+            text-shadow: 0 0 30px #ff69b4, 0 0 80px #ff1493;
             letter-spacing: 2px;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .cinematic-intro .sub {
-            font-size: clamp(1rem, 5vw, 1.8rem);
-            font-weight: 300;
-            background: rgba(255,255,240,0.25);
-            backdrop-filter: blur(4px);
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.5rem, 6vw, 2.4rem);
+            background: rgba(255, 220, 240, 0.3);
+            backdrop-filter: blur(6px);
             display: inline-block;
-            padding: 0.4rem 2rem;
+            padding: 0.5rem 2.5rem;
             border-radius: 60px;
-            border: 1px solid rgba(255,255,255,0.5);
-            color: #ffebf0;
+            border: 1px solid rgba(255, 200, 230, 0.8);
+            color: #fff0f5;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
@@ -117,7 +144,7 @@
             margin-bottom: 3rem;
         }
 
-        /* cake section */
+        /* cake section romantic */
         .cake-section {
             grid-column: span 1;
             display: flex;
@@ -132,13 +159,15 @@
             margin: 1rem auto;
             cursor: pointer;
             transition: transform 0.3s ease;
+            filter: drop-shadow(0 20px 25px #ff99cc);
         }
 
-        .cake-plate:active { transform: scale(0.98); }
+        .cake-plate:active { transform: scale(0.97); }
 
         .cake-img {
             width: 100%;
-            filter: drop-shadow(0 20px 20px rgba(255, 140, 200, 0.5));
+            border-radius: 30px;
+            background: #fcc2d7;
         }
 
         .candles-layer {
@@ -154,30 +183,30 @@
             position: absolute;
             width: 7%;
             height: 18%;
-            background: radial-gradient(circle at 30% 20%, #fff9e6, #ffe0a0);
+            background: linear-gradient(145deg, #fff2d7, #ffddbb);
             border-radius: 30% 30% 10% 10%;
             bottom: 67%;
             transform-origin: bottom center;
-            box-shadow: 0 0 15px gold;
+            box-shadow: 0 0 20px #ffcc88, 0 0 30px #ffb266;
         }
 
         .c1 { left: 25%; height: 19%; width: 6%; }
-        .c2 { left: 40%; height: 22%; width: 7%; background: #fbe9d2; }
+        .c2 { left: 40%; height: 22%; width: 7%; background: #ffe6cd; }
         .c3 { left: 55%; height: 17%; width: 5.5%; }
         .c4 { left: 70%; height: 20%; width: 6.5%; }
 
         .flame {
             position: absolute;
-            top: -35%;
-            left: 20%;
-            width: 160%;
-            height: 50%;
-            background: radial-gradient(circle, #ffdd55 10%, #ffaa33 60%, transparent 90%);
+            top: -40%;
+            left: 15%;
+            width: 180%;
+            height: 60%;
+            background: radial-gradient(circle, #ffdd88 10%, #ff8833 70%, transparent);
             border-radius: 60% 20% 60% 20%;
-            transform: rotate(-8deg);
-            filter: blur(1px);
-            animation: flicker 0.2s infinite alternate;
-            box-shadow: 0 0 25px #ffb347;
+            transform: rotate(-5deg);
+            filter: blur(1.5px);
+            animation: flickerRomantic 0.15s infinite alternate;
+            box-shadow: 0 0 40px #ffaa33;
         }
 
         .candle.out .flame {
@@ -185,16 +214,18 @@
         }
 
         .cut-message {
-            font-size: 1.2rem;
-            background: rgba(255,255,255,0.2);
-            padding: 0.5rem 1.5rem;
+            font-size: 1.3rem;
+            background: rgba(255, 240, 245, 0.25);
+            padding: 0.7rem 2rem;
             border-radius: 40px;
             margin-top: 1rem;
-            border: 1px solid pink;
-            font-weight: 500;
+            border: 1px solid #ffa5c3;
+            font-weight: 400;
+            color: #fff0f5;
+            text-shadow: 0 2px 5px #ff3388;
         }
 
-        /* polaroid gallery */
+        /* polaroid gallery with soft memories */
         .gallery-scroll {
             grid-column: span 1;
             overflow-x: auto;
@@ -202,84 +233,82 @@
             gap: 1.5rem;
             padding: 1rem 0.5rem;
             scrollbar-width: thin;
-            scrollbar-color: #ff99cc #2a1a36;
+            scrollbar-color: #ff99bb #3a1e2a;
             border-radius: 50px;
-            background: rgba(0,0,0,0.1);
-            backdrop-filter: blur(6px);
+            background: rgba(255, 200, 220, 0.1);
+            backdrop-filter: blur(8px);
         }
 
         .gallery-scroll::-webkit-scrollbar { height: 6px; }
-        .gallery-scroll::-webkit-scrollbar-thumb { background: #ff99cc; border-radius: 20px; }
+        .gallery-scroll::-webkit-scrollbar-thumb { background: #ff99bb; border-radius: 20px; }
 
         .polaroid {
             min-width: 170px;
-            background: rgba(255, 250, 240, 0.2);
-            backdrop-filter: blur(18px);
+            background: rgba(255, 235, 245, 0.25);
+            backdrop-filter: blur(20px);
             padding: 0.8rem 0.8rem 1.5rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 20px 30px -5px rgba(0,0,0,0.6);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 30px -5px rgba(200, 100, 150, 0.6);
             transform: rotate(1deg);
-            transition: all 0.2s;
+            transition: 0.3s;
         }
 
         .polaroid img {
             width: 100%;
             aspect-ratio: 1 / 1.1;
             object-fit: cover;
-            border-radius: 12px;
-            background: #bbaacc;
+            border-radius: 16px;
+            background: #d9b8c4;
+            background: linear-gradient(145deg, #e6c3d0, #d9b2c2);
             color: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(145deg, #b380aa, #d6b0c2);
         }
 
         .polaroid .caption {
             text-align: center;
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-top: 0.6rem;
             font-weight: 500;
-            color: #ffecf0;
-            text-shadow: 0 2px 4px black;
+            color: #fff0fa;
+            text-shadow: 0 2px 4px #b34180;
         }
 
-        /* love story typing + letter pop */
+        /* love story typing with romantic text */
         .story-card {
             grid-column: span 1;
         }
 
         .typing-container {
-            font-size: 1.3rem;
-            line-height: 1.6;
-            min-height: 150px;
+            font-size: 1.25rem;
+            line-height: 1.7;
+            min-height: 170px;
             font-weight: 300;
             background: rgba(0,0,0,0.25);
-            padding: 1.5rem;
-            border-radius: 32px;
-            border: 1px solid rgba(255,255,255,0.2);
+            padding: 1.8rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 180, 200, 0.4);
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
             white-space: pre-wrap;
             word-break: break-word;
+            color: #ffecf0;
         }
 
         .cursor {
             display: inline-block;
             width: 3px;
-            background: #ffb6c1;
-            margin-left: 5px;
-            animation: blink 1s infinite;
+            background: #ffb0d0;
+            margin-left: 6px;
+            animation: blink 1s step-end infinite;
         }
 
         .love-letter-btn {
             margin-top: 1.5rem;
-            background: rgba(255, 218, 233, 0.25);
-            border: 1px solid white;
+            background: rgba(255, 190, 220, 0.3);
+            border: 1.5px solid #ffbfd7;
             padding: 1rem 1.5rem;
             border-radius: 60px;
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 500;
             color: white;
             backdrop-filter: blur(12px);
             transition: 0.4s;
@@ -290,26 +319,27 @@
         }
 
         .love-letter-btn:hover {
-            background: rgba(255,255,255,0.4);
+            background: rgba(255, 220, 240, 0.5);
             letter-spacing: 2px;
+            border-color: #ffb0d0;
         }
 
-        /* popup letter glass */
+        /* love letter popup - ultra glass */
         .letter-popup {
             position: fixed;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%) scale(0);
-            background: rgba(25, 15, 30, 0.6);
-            backdrop-filter: blur(30px);
-            border: 2px solid rgba(255,255,255,0.5);
-            border-radius: 50px;
-            padding: 2.5rem 2rem;
+            background: rgba(60, 20, 40, 0.6);
+            backdrop-filter: blur(40px);
+            border: 2px solid rgba(255, 200, 230, 0.6);
+            border-radius: 60px;
+            padding: 2.5rem 2.2rem;
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 50px 100px rgba(219, 112, 147, 0.6), 0 0 0 2px #ffc0cb inset;
+            box-shadow: 0 50px 100px #ffb6c180, 0 0 0 3px #ffb3c6 inset;
             z-index: 999;
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            color: #fff5f0;
+            color: #fff5fa;
         }
 
         .letter-popup.show {
@@ -317,127 +347,112 @@
         }
 
         .letter-popup p {
-            font-size: 1.4rem;
-            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-family: 'Great Vibes', cursive;
             margin: 1rem 0;
         }
 
         .close-letter {
             float: right;
-            font-size: 2rem;
+            font-size: 2.2rem;
             background: none;
             border: none;
-            color: white;
+            color: #ffcfdf;
             cursor: pointer;
         }
 
         /* music control */
         .music-control {
             position: fixed;
-            bottom: 25px; right: 25px;
-            background: rgba(255,255,255,0.2);
+            bottom: 30px; right: 30px;
+            background: rgba(255, 140, 200, 0.3);
             backdrop-filter: blur(20px);
-            width: 60px; height: 60px;
+            width: 65px; height: 65px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid white;
-            color: white;
-            font-size: 1.8rem;
+            border: 2px solid #ffb0d0;
+            color: #ffecf0;
+            font-size: 2rem;
             cursor: pointer;
             z-index: 200;
-            box-shadow: 0 0 30px hotpink;
+            box-shadow: 0 0 30px #ff69b4;
         }
 
-        /* animations */
-        @keyframes flicker { 0% { opacity: 1; transform: rotate(-6deg) scaleY(1); } 100% { opacity: 0.9; transform: rotate(-10deg) scaleY(1.1); } }
+        /* keyframes romantic */
+        @keyframes flickerRomantic { 0% { opacity: 1; transform: rotate(-4deg) scaleY(1); } 100% { opacity: 0.85; transform: rotate(-9deg) scaleY(1.15); } }
         @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
-        @keyframes floatIn { 0% { opacity:0; transform: translateY(-50px); } 100% { opacity:1; transform: translateY(0); } }
+        @keyframes floatIn { 0% { opacity:0; transform: translateY(-40px); } 100% { opacity:1; transform: translateY(0); } }
         
-        /* heart rain + petals + fireworks (canvas) */
-        #effects-canvas {
+        /* canvas for heart rain + rose petals */
+        #romance-canvas {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             pointer-events: none;
             z-index: 20;
         }
-        
-        /* night sky stars */
-        .stars-overlay {
+
+        /* floating 3D glowing hearts */
+        .float-3d-heart {
             position: fixed;
-            top:0; left:0; width:100%; height:100%;
-            background: transparent;
-            background-image: radial-gradient(2px 2px at 15px 80px, #fff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 72px 430px, #ffecaa, rgba(0,0,0,0)),
-                              radial-gradient(3px 3px at 280px 150px, #ffe6f0, rgba(0,0,0,0)),
-                              radial-gradient(1px 1px at 900px 320px, #ffffff, rgba(0,0,0,0)),
-                              radial-gradient(2px 2px at 200px 700px, #ffddf0, rgba(0,0,0,0)),
-                              radial-gradient(3px 3px at 1100px 550px, #ffe0f0, rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 250px 250px;
-            opacity: 0.7;
+            color: rgba(255, 100, 170, 0.5);
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 20px #ff3388) blur(0.6px);
+            z-index: 25;
             pointer-events: none;
-            z-index: 5;
+            animation: levitate 9s infinite alternate ease-in-out;
+            text-shadow: 0 0 20px hotpink;
+        }
+        @keyframes levitate {
+            0% { transform: translateY(0) rotate(0deg) scale(1); }
+            100% { transform: translateY(-50px) rotate(12deg) scale(1.2); }
         }
 
-        /* mobile fine-tune */
+        /* responsive */
         @media (max-width: 600px) {
             .grid-premium { gap: 1.2rem; }
             .glass-card { padding: 1.5rem 1rem; }
             .typing-container { font-size: 1rem; }
         }
-
-        /* floating 3D hearts (css) */
-        .float-heart {
-            position: fixed;
-            color: rgba(255, 120, 200, 0.5);
-            font-size: 2rem;
-            filter: drop-shadow(0 0 15px #ff69b4) blur(0.7px);
-            z-index: 25;
-            pointer-events: none;
-            animation: levitate 8s infinite alternate ease-in-out;
-        }
-        @keyframes levitate {
-            0% { transform: translateY(0) rotate(0deg) scale(1); }
-            100% { transform: translateY(-40px) rotate(10deg) scale(1.2); }
-        }
     </style>
 </head>
 <body>
-    <!-- romantic background video (silent ambiance) -->
+    <!-- dreamy background video (romantic slow-motion style) -->
     <video id="bg-video" autoplay muted loop playsinline>
         <source src="https://videos.pexels.com/video-files/3214458/3214458-uhd_3840_2160_25fps.mp4" type="video/mp4">
         <!-- fallback soft color -->
     </video>
-    <div class="glass-overlay"></div>
-    <div class="stars-overlay"></div>
+    <div class="romantic-overlay"></div>
+    <div class="stars-hearts"></div>
 
-    <!-- canvas for hearts rain, petals & fireworks -->
-    <canvas id="effects-canvas"></canvas>
+    <!-- canvas for falling hearts and rose petals -->
+    <canvas id="romance-canvas"></canvas>
 
-    <!-- floating 3D hearts (extra) -->
-    <div class="float-heart" style="top: 12%; left: 5%;">❤️‍🔥</div>
-    <div class="float-heart" style="top: 70%; left: 90%; animation-delay: -2s;">❤️</div>
-    <div class="float-heart" style="top: 30%; left: 85%; font-size: 3rem; animation-delay: -5s;">💖</div>
-    <div class="float-heart" style="top: 85%; left: 15%; animation-delay: -1s;">💗</div>
+    <!-- floating 3D glowing hearts (extra romance) -->
+    <div class="float-3d-heart" style="top: 15%; left: 8%;">❤️</div>
+    <div class="float-3d-heart" style="top: 70%; left: 88%; animation-delay: -2.5s;">💖</div>
+    <div class="float-3d-heart" style="top: 30%; left: 78%; font-size: 3rem; animation-delay: -4s;">💕</div>
+    <div class="float-3d-heart" style="top: 85%; left: 12%; animation-delay: -1s;">💗</div>
+    <div class="float-3d-heart" style="top: 45%; left: 95%; font-size: 2.5rem;">💓</div>
 
-    <!-- main content -->
+    <!-- main romantic content -->
     <div class="content">
-        <!-- cinematic intro -->
+        <!-- cinematic intro with couple names -->
         <div class="cinematic-intro">
             <h1>Vipin ❤️ Jojiya</h1>
-            <div class="sub">4th Wedding Anniversary · 10 March</div>
+            <div class="sub">4th Wedding Anniversary – 10 March</div>
         </div>
 
-        <!-- premium grid -->
+        <!-- premium grid (everything in glass) -->
         <div class="grid-premium">
-            <!-- Cake cutting with candles -->
+            <!-- Cake cutting with 4 blinking candles -->
             <div class="glass-card cake-section">
-                <h2 style="font-weight: 300; letter-spacing: 2px;">🎂 Cut the moment</h2>
+                <h2 style="font-family: 'Great Vibes'; font-size: 2.2rem; letter-spacing: 1px;">🎂 sweet celebration</h2>
                 <div class="cake-plate" id="cakeCutArea">
-                    <img class="cake-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23ffd0d0'/%3E%3Ccircle cx='100' cy='120' r='55' fill='%23f5cba0'/%3E%3Crect x='60' y='40' width='80' height='80' fill='%23f2e0c0'/%3E%3C/svg%3E" alt="Anniversary Cake">
+                    <!-- romantic cake illustration (soft pink) -->
+                    <img class="cake-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23ffd9e6'/%3E%3Ccircle cx='100' cy='120' r='55' fill='%23fcd5c0'/%3E%3Crect x='60' y='40' width='80' height='80' fill='%23ffe0c0'/%3E%3C/svg%3E" alt="Anniversary Cake">
                     <div class="candles-layer" id="candlesGroup">
                         <div class="candle c1" id="candle1"><div class="flame"></div></div>
                         <div class="candle c2" id="candle2"><div class="flame"></div></div>
@@ -445,52 +460,52 @@
                         <div class="candle c4" id="candle4"><div class="flame"></div></div>
                     </div>
                 </div>
-                <div class="cut-message" id="cutMessage">👇 Tap cake to cut & blow candles</div>
+                <div class="cut-message" id="cutMessage">💞 tap cake to cut & blow candles</div>
             </div>
 
-            <!-- Polaroid memory gallery (fake memories) -->
+            <!-- Polaroid memory gallery -->
             <div class="glass-card" style="padding: 1.2rem;">
-                <h3 style="margin-bottom: 1rem;">📸 Polaroid moments</h3>
+                <h3 style="font-family: 'Great Vibes'; font-size: 2rem; margin-bottom: 0.8rem;">📸 love memories</h3>
                 <div class="gallery-scroll">
-                    <div class="polaroid"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect width='100' height='110' fill='%23d9b8c4'/%3E%3Ctext x='10' y='55' fill='white' font-size='12'%3E%3C![CDATA[❤️ V%26J]]%3E%3C/text%3E%3C/svg%3E" alt="memory"><div class="caption">First dance</div></div>
-                    <div class="polaroid"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect width='100' height='110' fill='%23c7a3b0'/%3E%3Ctext x='10' y='55' fill='white'%3E✨ 2021%3C/text%3E%3C/svg%3E" alt="memory"><div class="caption">Honeymoon</div></div>
-                    <div class="polaroid"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect width='100' height='110' fill='%23bda9b5'/%3E%3Ctext x='10' y='55' fill='white'%3E🌈 dream%3C/text%3E%3C/svg%3E" alt="memory"><div class="caption">Together</div></div>
-                    <div class="polaroid"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect width='100' height='110' fill='%23f5c3bc'/%3E%3Ctext x='15' y='55' fill='white'%3E💕 4 years%3C/text%3E%3C/svg%3E" alt="memory"><div class="caption">10 March</div></div>
+                    <div class="polaroid"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect width='100' height='110' fill='%23f5c3d0'/%3E%3Ctext x='15' y='55' fill='white' font-size='14'%3E❤️ V%26J%3C/text%3E%3C/svg%3E" alt="memory"><div class="caption">first look</div></div>
+                    <div class="polaroid"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect width='100' height='110' fill='%23e3b8cf'/%3E%3Ctext x='15' y='55' fill='white'%3E✨ 2021%3C/text%3E%3C/svg%3E" alt="memory"><div class="caption">wedding</div></div>
+                    <div class="polaroid"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect width='100' height='110' fill='%23f0bfd0'/%3E%3Ctext x='15' y='55' fill='white'%3E🌹 forever%3C/text%3E%3C/svg%3E" alt="memory"><div class="caption">honeymoon</div></div>
+                    <div class="polaroid"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 110'%3E%3Crect width='100' height='110' fill='%23ffc0cb'/%3E%3Ctext x='15' y='55' fill='white'%3E💕 4 years%3C/text%3E%3C/svg%3E" alt="memory"><div class="caption">10 march</div></div>
                 </div>
             </div>
 
-            <!-- Love story typing animation + love letter -->
+            <!-- Love story typing animation + letter popup trigger -->
             <div class="glass-card story-card">
                 <div class="typing-container" id="typingText">
                     <span id="story"></span><span class="cursor"></span>
                 </div>
                 <div class="love-letter-btn" id="loveLetterBtn">
-                    <i class="fas fa-envelope-open-text"></i> Open love letter
+                    <i class="fas fa-heart"></i> Open love letter
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- love letter popup glass -->
+    <!-- love letter popup glass (ultra romantic) -->
     <div class="letter-popup" id="letterPopup">
         <button class="close-letter" id="closeLetter">&times;</button>
-        <p style="font-size:2rem;">💌</p>
-        <p>My dearest Vipin & Jojiya,</p>
-        <p>Four years of magic, laughter, and infinite love. You are each other's poetry. Here's to forever.</p>
+        <p style="font-size:2.5rem;">💌</p>
+        <p>My Vipin & Jojiya,</p>
+        <p>Four years of your love story fills the world with poetry. May your journey always bloom like roses under the stars. Happy 4th anniversary!</p>
         <p>❤️ 10.03.2021 ❤️</p>
     </div>
 
-    <!-- music control (auto play attempts) -->
+    <!-- music control (romantic tune) -->
     <div class="music-control" id="musicToggle">
         <i class="fas fa-music"></i>
     </div>
     <audio id="bgMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" type="audio/mp3">
     </audio>
 
     <script>
         (function() {
-            // Cake cut animation + candles off
+            // Cake cut animation + blow candles
             const cakeArea = document.getElementById('cakeCutArea');
             const candles = ['candle1','candle2','candle3','candle4'].map(id => document.getElementById(id));
             const cutMsg = document.getElementById('cutMessage');
@@ -499,26 +514,24 @@
             cakeArea.addEventListener('click', () => {
                 if (cakeCut) return;
                 cakeCut = true;
-                // blow off each candle with delay (blinking stops)
                 candles.forEach((candle, idx) => {
                     setTimeout(() => {
                         candle.classList.add('out');
                     }, idx * 150);
                 });
-                cutMsg.innerHTML = '🎉 Cake cut! Candles blown · Happy 4th! 🕯️✨';
-                // also trigger some fireworks
-                launchFireworks(5);
+                cutMsg.innerHTML = '🎉 cake cut! four candles of love blown ✨💖';
+                launchFireworks(6);
             });
 
-            // Typing love story animation
+            // Typing love story (romantic)
             const storyEl = document.getElementById('story');
-            const fullStory = "10 March 2021 · Vipin & Jojiya united. Four years of growing, laughing, and building dreams. From the first look to forever, every day is a fairytale. Happy 4th anniversary, you two! 💕";
+            const fullStory = "10 March 2021 · Vipin & Jojiya became one. Four years of laughter, gentle glances, and endless support. Today the stars whisper your love story. Happy 4th, you two! 💕";
             let i = 0;
             function typeWriter() {
                 if (i < fullStory.length) {
                     storyEl.textContent += fullStory.charAt(i);
                     i++;
-                    setTimeout(typeWriter, 70);
+                    setTimeout(typeWriter, 60);
                 }
             }
             window.addEventListener('load', typeWriter);
@@ -538,7 +551,7 @@
                 if (e.target === letterPopup) letterPopup.classList.remove('show');
             });
 
-            // Background music + autoplay attempt
+            // Background music + autoplay attempt (user interaction)
             const music = document.getElementById('bgMusic');
             const musicIcon = document.querySelector('#musicToggle i');
             let musicPlaying = false;
@@ -549,9 +562,7 @@
                     musicIcon.classList.remove('fa-pause');
                     musicIcon.classList.add('fa-music');
                 } else {
-                    music.play().catch(() => {
-                        alert('Tap screen to enable music');
-                    });
+                    music.play().catch(() => {});
                     musicIcon.classList.remove('fa-music');
                     musicIcon.classList.add('fa-pause');
                 }
@@ -559,8 +570,8 @@
             }
 
             document.getElementById('musicToggle').addEventListener('click', toggleMusic);
-            // auto play (attempt after any interaction)
-            document.body.addEventListener('click', function initMusic() {
+            // attempt autoplay after any gesture
+            document.body.addEventListener('click', function initMusicOnce() {
                 if (!musicPlaying) {
                     music.play().then(() => {
                         musicPlaying = true;
@@ -570,8 +581,8 @@
                 }
             }, { once: true });
 
-            // Canvas effects: heart rain, rose petals, fireworks
-            const canvas = document.getElementById('effects-canvas');
+            // Canvas for heart rain & rose petals
+            const canvas = document.getElementById('romance-canvas');
             const ctx = canvas.getContext('2d');
             let width, height;
             let particles = [];
@@ -585,82 +596,76 @@
             window.addEventListener('resize', resizeCanvas);
             resizeCanvas();
 
-            class Particle {
+            class RomanticParticle {
                 constructor(type) {
-                    this.type = type || (Math.random() > 0.6 ? 'heart' : 'petal');
+                    this.type = type || (Math.random() > 0.5 ? 'heart' : 'petal');
                     this.x = Math.random() * width;
                     this.y = Math.random() * height - height;
-                    this.size = 8 + Math.random() * 18;
-                    this.speedY = 1 + Math.random() * 3;
-                    this.speedX = (Math.random() - 0.5) * 0.8;
-                    this.opacity = 0.5 + Math.random() * 0.5;
+                    this.size = 12 + Math.random() * 22;
+                    this.speedY = 1 + Math.random() * 3.5;
+                    this.speedX = (Math.random() - 0.5) * 0.6;
+                    this.opacity = 0.6 + Math.random() * 0.4;
                     if (this.type === 'heart') {
                         this.char = '❤️';
                     } else {
-                        this.char = '🌹'; // rose petal
+                        this.char = '🌹';
                     }
                 }
                 update() {
                     this.y += this.speedY;
                     this.x += this.speedX;
-                    if (this.y > height + 30) {
+                    if (this.y > height + 40) {
                         this.y = -30;
                         this.x = Math.random() * width;
                     }
                 }
                 draw() {
                     ctx.font = `${this.size}px 'Segoe UI', 'Arial Unicode MS', sans-serif`;
-                    ctx.shadowColor = '#ffaad4';
-                    ctx.shadowBlur = 15;
+                    ctx.shadowColor = '#ffa0c0';
+                    ctx.shadowBlur = 20;
                     ctx.globalAlpha = this.opacity;
                     ctx.fillText(this.char, this.x, this.y);
                 }
             }
 
-            for (let i = 0; i < 50; i++) {
-                particles.push(new Particle(i % 3 === 0 ? 'heart' : 'petal'));
+            for (let i = 0; i < 60; i++) {
+                particles.push(new RomanticParticle(i % 3 === 0 ? 'heart' : 'petal'));
             }
 
-            // Fireworks helper
+            // Fireworks (romantic bursts)
             function launchFireworks(count) {
                 for (let f = 0; f < count; f++) {
                     setTimeout(() => {
-                        for (let i = 0; i < 12; i++) {
-                            let p = new Particle('heart');
-                            p.x = width/2 + (Math.random()-0.5)*200;
+                        for (let i = 0; i < 15; i++) {
+                            let p = new RomanticParticle('heart');
+                            p.x = width/2 + (Math.random()-0.5)*300;
                             p.y = height/2 + (Math.random()-0.5)*200;
-                            p.speedY = (Math.random()-0.5)*6;
-                            p.speedX = (Math.random()-0.5)*6;
-                            p.size = 20;
+                            p.speedY = (Math.random()-0.5)*7;
+                            p.speedX = (Math.random()-0.5)*7;
+                            p.size = 18;
                             p.opacity = 1;
-                            p.char = '💥✨❤️'[Math.floor(Math.random()*3)];
+                            p.char = ['❤️','💖','💕','✨'][Math.floor(Math.random()*4)];
                             particles.push(p);
                         }
                     }, f * 200);
                 }
             }
 
-            function animate() {
+            function animateRomance() {
                 ctx.clearRect(0, 0, width, height);
-                ctx.shadowColor = '#ffb6c1';
-                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#ffb0d0';
+                ctx.shadowBlur = 18;
                 for (let p of particles) {
                     p.update();
                     p.draw();
                 }
-                // limit particle count (remove if too many)
-                if (particles.length > 250) particles = particles.slice(-200);
-                requestAnimationFrame(animate);
+                if (particles.length > 300) particles = particles.slice(-250);
+                requestAnimationFrame(animateRomance);
             }
-            animate();
+            animateRomance();
 
-            // Additional fireworks every 10 sec
-            setInterval(() => launchFireworks(2), 10000);
-
-            // Blinking candles simulation via class out is enough; no extra blink needed because flame already flickers.
-
-            // Add interactive cut again after cut (disabled by flag, but we want multiple cuts? just one)
-            // Re-allow cut? but it's fine.
+            // periodic fireworks (romantic)
+            setInterval(() => launchFireworks(2), 8000);
         })();
     </script>
 </body>
