@@ -16,24 +16,49 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
+    overflow:hidden;
+    color:white;
+}
+
+/* Background Video */
+.video-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+/* Dark overlay */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    z-index:-1;
+}
+
+/* Glass Card */
+.container{
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
-    color:white;
     padding:20px;
-    overflow:hidden;
 }
 
-.container{
-    max-width:550px;
+.card{
+    max-width:600px;
     background:rgba(255,255,255,0.15);
     backdrop-filter:blur(15px);
     padding:35px;
     border-radius:25px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+    text-align:center;
 }
 
 h1{
@@ -45,7 +70,7 @@ h1{
 #typedText{
     font-size:1.1rem;
     line-height:1.8;
-    white-space:pre-line; /* keeps line breaks */
+    white-space:pre-line;
     min-height:200px;
 }
 
@@ -62,13 +87,13 @@ h1{
     50%{opacity:0;}
 }
 
-/* Floating Hearts */
+/* Floating hearts */
 .heart{
     position:fixed;
     bottom:-10px;
     font-size:20px;
     animation: float 6s linear infinite;
-    opacity:0.7;
+    opacity:0.8;
 }
 
 @keyframes float{
@@ -81,9 +106,18 @@ h1{
 
 <body>
 
+<!-- Romantic Background Video -->
+<video class="video-bg" autoplay muted loop playsinline>
+    <source src="https://cdn.pixabay.com/video/2022/10/11/134103-759381479_large.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
 <div class="container">
-    <h1>My Love ❤️</h1>
-    <div id="typedText"></div><span class="cursor"></span>
+    <div class="card">
+        <h1>My Love ❤️</h1>
+        <div id="typedText"></div><span class="cursor"></span>
+    </div>
 </div>
 
 <!-- Background Music -->
@@ -93,7 +127,7 @@ h1{
 
 <script>
 
-// YOUR EXACT LETTER
+// YOUR LETTER
 const text = `My love,
 
 From the moment you came into my life,
@@ -115,10 +149,9 @@ function typeWriter(){
     if(i < text.length){
         typedText.innerHTML += text.charAt(i);
 
-        // Natural pause effect
         let delay = 40;
-        if(text.charAt(i) === "," ) delay = 200;
-        if(text.charAt(i) === "." ) delay = 400;
+        if(text.charAt(i) === ",") delay = 200;
+        if(text.charAt(i) === ".") delay = 400;
         if(text.charAt(i) === "\n") delay = 300;
 
         i++;
@@ -138,7 +171,7 @@ function createHeart(){
     document.body.appendChild(heart);
     setTimeout(()=>{heart.remove()},6000);
 }
-setInterval(createHeart,500);
+setInterval(createHeart,600);
 
 // Mobile autoplay fix
 document.body.addEventListener("click", function(){
