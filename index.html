@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>To My Love ❤️</title>
+<title>Forever Us ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -16,7 +16,7 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    overflow:hidden;
+    overflow-x:hidden;
     color:white;
 }
 
@@ -31,46 +31,42 @@ body{
     z-index:-2;
 }
 
-/* Dark overlay */
 .overlay{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.4);
+    background:rgba(0,0,0,0.5);
     z-index:-1;
 }
 
-/* Glass Card */
+/* Main Container */
 .container{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
-}
-
-.card{
-    max-width:600px;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(15px);
-    padding:35px;
-    border-radius:25px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+    padding:40px 20px;
     text-align:center;
 }
 
 h1{
     font-family:'Dancing Script',cursive;
-    font-size:2.8rem;
+    font-size:3rem;
     margin-bottom:20px;
 }
 
+/* Love Letter Card */
+.card{
+    max-width:600px;
+    margin:0 auto 50px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    padding:30px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
 #typedText{
-    font-size:1.1rem;
-    line-height:1.8;
     white-space:pre-line;
+    line-height:1.8;
     min-height:200px;
 }
 
@@ -78,8 +74,7 @@ h1{
     display:inline-block;
     width:2px;
     background:white;
-    margin-left:5px;
-    animation: blink 1s infinite;
+    animation:blink 1s infinite;
 }
 
 @keyframes blink{
@@ -87,19 +82,68 @@ h1{
     50%{opacity:0;}
 }
 
-/* Floating hearts */
-.heart{
-    position:fixed;
-    bottom:-10px;
-    font-size:20px;
-    animation: float 6s linear infinite;
-    opacity:0.8;
+/* Shape Gallery */
+.gallery{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:30px;
 }
 
+.shape{
+    width:180px;
+    height:180px;
+    background-size:cover;
+    background-position:center;
+    animation:float 6s ease-in-out infinite;
+    transition:0.5s;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Different Shapes */
+.circle{ border-radius:50%; }
+
+.rounded{ border-radius:30px; }
+
+.blob{
+    border-radius:60% 40% 30% 70% / 60% 30% 70% 40%;
+}
+
+.diamond{
+    transform:rotate(45deg);
+    overflow:hidden;
+}
+
+.diamond::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:inherit;
+    background-size:cover;
+    background-position:center;
+    transform:rotate(-45deg) scale(1.4);
+}
+
+/* Hover */
+.shape:hover{
+    transform:scale(1.1);
+    box-shadow:0 15px 40px rgba(255,255,255,0.7);
+}
+
+/* Floating animation */
 @keyframes float{
-    0%{ transform:translateY(0); opacity:0; }
-    50%{ opacity:1; }
-    100%{ transform:translateY(-100vh); opacity:0; }
+    0%{ transform:translateY(0px); }
+    50%{ transform:translateY(-12px); }
+    100%{ transform:translateY(0px); }
+}
+
+/* Responsive */
+@media(max-width:600px){
+    .shape{
+        width:130px;
+        height:130px;
+    }
 }
 </style>
 </head>
@@ -114,20 +158,31 @@ h1{
 <div class="overlay"></div>
 
 <div class="container">
-    <div class="card">
-        <h1>My Love ❤️</h1>
-        <div id="typedText"></div><span class="cursor"></span>
-    </div>
+
+<h1>My Forever ❤️</h1>
+
+<div class="card">
+<div id="typedText"></div><span class="cursor"></span>
+</div>
+
+<div class="gallery">
+<div class="shape circle" style="background-image:url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e')"></div>
+<div class="shape rounded" style="background-image:url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2')"></div>
+<div class="shape blob" style="background-image:url('https://images.unsplash.com/photo-1529634896730-1e8d4d3c2b5c')"></div>
+<div class="shape circle" style="background-image:url('https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb')"></div>
+<div class="shape rounded" style="background-image:url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1')"></div>
+</div>
+
 </div>
 
 <!-- Background Music -->
 <audio id="bgMusic" autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b70c9c6d4.mp3?filename=romantic-background-112199.mp3" type="audio/mpeg">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b70c9c6d4.mp3?filename=romantic-background-112199.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-// YOUR LETTER
+// Typing Love Letter
 const text = `My love,
 
 From the moment you came into my life,
@@ -142,36 +197,21 @@ I will always choose you.
 
 Today. Tomorrow. Forever. ❤️`;
 
-let i = 0;
-const typedText = document.getElementById("typedText");
+let i=0;
+const typedText=document.getElementById("typedText");
 
 function typeWriter(){
-    if(i < text.length){
-        typedText.innerHTML += text.charAt(i);
-
-        let delay = 40;
-        if(text.charAt(i) === ",") delay = 200;
-        if(text.charAt(i) === ".") delay = 400;
-        if(text.charAt(i) === "\n") delay = 300;
-
+    if(i<text.length){
+        typedText.innerHTML+=text.charAt(i);
+        let delay=40;
+        if(text.charAt(i)===",") delay=200;
+        if(text.charAt(i)===".") delay=400;
+        if(text.charAt(i)==="\n") delay=300;
         i++;
-        setTimeout(typeWriter, delay);
+        setTimeout(typeWriter,delay);
     }
 }
-
 typeWriter();
-
-// Floating hearts
-function createHeart(){
-    const heart=document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML="❤️";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=Math.random()*20+15+"px";
-    document.body.appendChild(heart);
-    setTimeout(()=>{heart.remove()},6000);
-}
-setInterval(createHeart,600);
 
 // Mobile autoplay fix
 document.body.addEventListener("click", function(){
