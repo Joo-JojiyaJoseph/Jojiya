@@ -18,67 +18,61 @@ body{
     font-family:'Poppins',sans-serif;
     background: linear-gradient(135deg,#ff758c,#ff7eb3);
     min-height:100vh;
-    overflow-x:hidden;
     color:white;
-    padding:30px;
+    padding:20px;
+    overflow-x:hidden;
 }
 
 /* Header */
 .header{
     text-align:center;
-    margin-bottom:40px;
+    margin-bottom:30px;
 }
 
 .header h1{
     font-family:'Dancing Script',cursive;
-    font-size:3.5rem;
+    font-size:2.8rem;
 }
 
 .header p{
-    font-size:1.2rem;
-    margin-bottom:15px;
+    margin-top:10px;
+    font-size:1rem;
 }
 
-button{
-    padding:10px 20px;
-    border:none;
-    border-radius:25px;
-    background:white;
-    color:#ff4b6e;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#ff4b6e;
-    color:white;
-}
-
-/* Masonry Grid */
+/* Responsive Grid */
 .gallery{
-    column-count:3;
-    column-gap:15px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+    gap:15px;
 }
 
+/* Image Style */
 .gallery img{
     width:100%;
-    margin-bottom:15px;
     border-radius:20px;
-    transition:0.4s;
-    cursor:pointer;
+    opacity:0;
+    transform: translateY(40px) scale(0.9);
+    transition: all 0.8s ease;
     box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    animation: floatImage 6s ease-in-out infinite;
 }
 
+/* Reveal Animation */
+.gallery img.show{
+    opacity:1;
+    transform: translateY(0) scale(1);
+}
+
+/* Hover Effect */
 .gallery img:hover{
-    transform:scale(1.05);
+    transform: scale(1.08);
 }
 
-/* Responsive */
-@media(max-width:900px){
-    .gallery{ column-count:2; }
-}
-@media(max-width:500px){
-    .gallery{ column-count:1; }
+/* Floating soft animation */
+@keyframes floatImage{
+    0%{ transform: translateY(0px); }
+    50%{ transform: translateY(-8px); }
+    100%{ transform: translateY(0px); }
 }
 
 /* Floating Hearts */
@@ -105,12 +99,28 @@ button:hover{
     transform:translate(-50%,-50%);
     background:white;
     color:#ff4b6e;
-    padding:30px;
+    padding:25px;
     border-radius:20px;
     width:90%;
-    max-width:400px;
+    max-width:350px;
     text-align:center;
     box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    border-radius:25px;
+    background:white;
+    color:#ff4b6e;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#ff4b6e;
+    color:white;
 }
 </style>
 </head>
@@ -124,7 +134,6 @@ button:hover{
 </div>
 
 <div class="gallery">
-    <!-- Sample Romantic Images -->
     <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
     <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2">
     <img src="https://images.unsplash.com/photo-1529634896730-1e8d4d3c2b5c">
@@ -146,12 +155,26 @@ button:hover{
     <button onclick="closeLetter()">Close</button>
 </div>
 
-<!-- Background Music -->
 <audio id="bgMusic" autoplay loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b70c9c6d4.mp3?filename=romantic-background-112199.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+// Scroll Reveal Animation
+const images = document.querySelectorAll(".gallery img");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+images.forEach(img => {
+    observer.observe(img);
+});
+
 // Floating hearts
 function createHeart(){
     const heart=document.createElement("div");
